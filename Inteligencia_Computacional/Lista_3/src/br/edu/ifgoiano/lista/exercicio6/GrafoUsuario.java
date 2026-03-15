@@ -2,9 +2,9 @@ package br.edu.ifgoiano.lista.exercicio6;
 
 import java.util.*;
 
-public class Questao6 {
+public class GrafoUsuario {
     public static void buscaLargura(Map<String, List<String>> grafo,
-                                    String inicio, String objetivo) {
+            String inicio, String objetivo) {
         Queue<List<String>> fila = new LinkedList<>();
         Set<String> visitados = new LinkedHashSet<>();
 
@@ -50,7 +50,8 @@ public class Questao6 {
             System.out.print("Aresta: ");
             String linha = sc.nextLine().trim();
 
-            if (linha.equalsIgnoreCase("fim")) break;
+            if (linha.equalsIgnoreCase("fim"))
+                break;
 
             String[] partes = linha.split("\\s+");
             if (partes.length != 2) {
