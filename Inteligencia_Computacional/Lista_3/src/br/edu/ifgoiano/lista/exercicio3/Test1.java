@@ -39,7 +39,7 @@ public class Test1 {
                 }
             }
         }
-        return null; // sem solução
+        return null;
     }
 
     static List<State[]> successors(State s) {
@@ -75,7 +75,7 @@ public class Test1 {
         while (true) {
             Step step = visited.get(cur);
             path.addFirst(new Step(cur, step.operation()));
-            if (step.state().equals(cur)) break; // chegou ao início
+            if (step.state().equals(cur)) break;
             cur = step.state();
         }
         return path;
