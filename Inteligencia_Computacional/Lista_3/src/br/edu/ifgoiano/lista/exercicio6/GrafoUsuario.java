@@ -94,21 +94,3 @@ public class GrafoUsuario {
     }
 }
 
-/*
-
-Exemplo de grafo:
-
-Aresta: A B
-Aresta: A C
-Aresta: B D
-Aresta: C E
-Aresta: E D
-Aresta: D F
-Aresta: fim
-
-Nós disponíveis: [A, B, C, D, E, F]
-
-Nó inicial  : A
-Nó objetivo : F
-
- */
