@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo do Wumpus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Mundo do Wumpus</h1>
+</header>
+
+<div class="game-container">
+
+  <div>
+    <div class="panel">
+      <h3>⚡ Pontuação</h3>
+      <div class="score-big pos" id="score-display">0</div>
+    </div>
+    <div class="panel">
+      <h3>🎯 Ações do Agente</h3>
+      <button class="btn"         id="btn-forward"   onclick="action('forward')">⬆️ Mover para Frente</button>
+      <button class="btn"         id="btn-turnRight" onclick="action('turnRight')">↩️ Virar à Direita</button>
+      <button class="btn"         id="btn-turnLeft"  onclick="action('turnLeft')">↪️ Virar à Esquerda</button>
+      <button class="btn danger"  id="btn-shoot"     onclick="action('shoot')">🏹 Atirar Flecha (−10)</button>
+      <button class="btn success" id="btn-grab"      onclick="action('grab')">💰 Pegar Objeto</button>
+      <button class="btn success" id="btn-climb"     onclick="action('climb')">🚪 Subir / Sair</button>
+    </div>
+    <div class="panel">
+      <h3>📍 Status do Agente</h3>
+      <div class="status-row"><span>🏹 Flechas</span><span class="status-val" id="s-arrows" style="color:var(--amber)">1</span></div>
+      <div class="status-row"><span>💰 Ouro</span>  <span class="status-val" id="s-gold"   style="color:var(--gold)">0</span></div>
+      <div class="status-row"><span>📍 Posição</span><span class="status-val" id="s-pos"    style="color:var(--blue)">[1,1]</span></div>
+      <div class="status-row"><span>🧭 Direção</span><span class="status-val" id="s-dir"    style="color:var(--blue)">→ Leste</span></div>
+    </div>
+    <div class="panel">
+      <h3>🔄 Controle</h3>
+      <button class="btn restart" onclick="newGame()">🎲 Novo Jogo</button>
+      <div class="hint">
+        <kbd>↑</kbd> mover &nbsp; <kbd>←</kbd><kbd>→</kbd> girar<br>
+        <kbd>G</kbd> pegar &nbsp; <kbd>A</kbd> atirar &nbsp; <kbd>S</kbd> subir
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-col">
+    <div class="grid-row-wrapper">
+      <div class="grid-labels-left" id="row-labels"></div>
+      <div>
+        <div class="grid-labels-top" id="col-labels"></div>
+        <div class="grid" id="game-grid"></div>
+      </div>
+    </div>
+    <div class="hint">Células descobertas mostram ícones e percepções · ❓ = inexplorado</div>
+    <div class="panel" style="width:100%">
+      <h3>📜 Log de Ações</h3>
+      <div class="log" id="action-log"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="panel">
+      <h3>👁️ Percepções Atuais</h3>
+      <div class="perc-item" data-id="stench" >💀 Fedor do Wumpus</div>
+      <div class="perc-item" data-id="breeze" >🌬️ Brisa (Poço)</div>
+      <div class="perc-item" data-id="rustle" >🦇 Barulho (Morcego)</div>
+      <div class="perc-item" data-id="glitter">✨ Brilho do Ouro</div>
+      <div class="perc-item" data-id="bump"   >🧱 Impacto (Parede)</div>
+      <div class="perc-item" data-id="scream" >😱 Grito do Wumpus</div>
+    </div>
+    <div class="panel">
+      <h3>🗺️ Legenda</h3>
+      <div class="legend-grid">
+        <div class="legend-item">👹 Wumpus</div>  <div class="legend-item">🕳️ Poço</div>
+        <div class="legend-item">💰 Ouro</div>    <div class="legend-item">🦇 Morcego</div>
+        <div class="legend-item">🧭 Agente</div>  <div class="legend-item">🚪 Saída [1,1]</div>
+        <div class="legend-item">💀 Fedor adj.</div><div class="legend-item">🌬️ Brisa adj.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>📊 Elementos do Mapa</h3>
+      <table class="score-table">
+        <tr><td>👹 Wumpus</td>  <td style="color:var(--red)">2</td></tr>
+        <tr><td>🕳️ Poços</td>   <td style="color:var(--blue)">4</td></tr>
+        <tr><td>💰 Ouro</td>    <td style="color:var(--gold)">3</td></tr>
+        <tr><td>🦇 Morcegos</td><td style="color:var(--amber)">2</td></tr>
+      </table>
+      <div style="font-size:.65rem;color:var(--muted);margin-top:.5rem">⚠️ Posições sorteadas aleatoriamente a cada jogo</div>
+    </div>
+    <div class="panel">
+      <h3>💯 Tabela de Pontos</h3>
+      <table class="score-table">
+        <tr><td>Cada ação</td>      <td style="color:var(--red)">−1</td></tr>
+        <tr><td>Pegar ouro</td>     <td style="color:var(--gold)">+1000</td></tr>
+        <tr><td>Cair em poço</td>   <td style="color:var(--red)">−1000</td></tr>
+        <tr><td>Devorado Wumpus</td><td style="color:var(--red)">−1000</td></tr>
+        <tr><td>Atirar flecha</td>  <td style="color:var(--amber)">−10</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-card" id="ov-card">
+    <div style="font-size:3rem" id="ov-emoji">💀</div>
+    <h2 id="ov-title">Game Over</h2>
+    <div class="overlay-msg" id="ov-msg"></div>
+    <div class="overlay-score" id="ov-score">0</div>
+    <div style="color:var(--muted);font-size:.8rem">pontos finais</div>
+    <button class="btn restart" onclick="newGame()">🎲 Jogar Novamente</button>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/map.js"></script>
+<script src="js/game.js"></script>
+<script src="js/perceptions.js"></script>
+<script src="js/render.js"></script>
+<script src="js/actions.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
