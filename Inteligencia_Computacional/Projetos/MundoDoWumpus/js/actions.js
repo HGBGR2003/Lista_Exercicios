@@ -123,7 +123,7 @@ function actionClimb() {
     G.gameOver = true;
     G.won = true;
     log("🚪 Você saiu da caverna! Pontuação final: " + G.score, "good");
-    showOverlay(true, "Você escapou com " + G.goldHeld + " pepita(s) de ouro!");
+    showResult(true, "Você escapou com " + G.goldHeld + " pepita(s) de ouro!");
     render();
   } else {
     log(
@@ -141,7 +141,7 @@ function checkRoom() {
     addScore(CFG.PEN_PIT);
     log("🕳️ Você caiu em um POÇO! " + CFG.PEN_PIT + " pontos.", "bad");
     G.gameOver = true;
-    showOverlay(false, "Você caiu em um poço sem fundo!");
+    showResult(false, "Você caiu em um poço sem fundo!");
     render();
     return;
   }
@@ -150,7 +150,7 @@ function checkRoom() {
     addScore(CFG.PEN_WUMPUS);
     log("👹 O WUMPUS te DEVOROU! " + CFG.PEN_WUMPUS + " pontos.", "bad");
     G.gameOver = true;
-    showOverlay(false, "O terrível Wumpus te devorou!");
+    showResult(false, "O terrível Wumpus te devorou!");
     render();
     return;
   }

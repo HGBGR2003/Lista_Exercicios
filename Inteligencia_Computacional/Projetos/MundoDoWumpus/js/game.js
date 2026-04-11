@@ -2,7 +2,8 @@
 let G = {};
 
 function newGame() {
-  document.getElementById("overlay").classList.remove("show");
+  const banner = document.getElementById("result-banner");
+  if (banner) { banner.style.display = "none"; banner.className = "result-banner"; }
 
   G = {
     map: createMap(),

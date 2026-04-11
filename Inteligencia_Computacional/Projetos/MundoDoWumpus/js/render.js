@@ -33,9 +33,19 @@ function renderGrid() {
       icons.className = "cell-icons";
 
       if (isAgent) {
-        icons.textContent = "🧭" + DIRS[ad].icon;
+        const img = document.createElement("img");
+        img.src = "img/agent.png";
+        img.alt = "Agente";
+        img.className = "agent-img";
+        // dir: 0=Leste(→) 1=Norte(↑) 2=Oeste(←) 3=Sul(↓)
+        // sprite base aponta para Leste, então rotacionamos conforme a direção
+        const rotations = [0, -90, 180, 90];
+        img.style.transform = `rotate(${rotations[ad]}deg)`;
+        img.style.transition = "transform 0.2s ease";
+        icons.appendChild(img);
       } else if (!isVisited) {
-        icons.textContent = "❓";
+        icons.textContent = "?";
+        icons.classList.add("cell-unknown");
       } else {
         const mc = G.map[r][c];
         let txt = "";
@@ -127,15 +137,13 @@ function buildLabels() {
   }
 }
 
-function showOverlay(won, msg) {
-  const card = document.getElementById("ov-card");
-  card.className = "overlay-card " + (won ? "win" : "lose");
-  document.getElementById("ov-emoji").textContent = won ? "🏆" : "💀";
-  document.getElementById("ov-title").textContent = won
-    ? "Você Venceu!"
-    : "Game Over";
-  document.getElementById("ov-msg").textContent = msg;
+function showResult(won, msg) {
+  const banner = document.getElementById("result-banner");
+  banner.className = "result-banner " + (won ? "win" : "lose");
+  banner.style.display = "flex";
+  document.getElementById("result-title").textContent = won ? "Você Venceu!" : "Game Over";
+  document.getElementById("result-msg").textContent = msg;
   const sc = G.score;
-  document.getElementById("ov-score").textContent = sc >= 0 ? "+" + sc : sc;
-  document.getElementById("overlay").classList.add("show");
+  document.getElementById("result-score").textContent = sc >= 0 ? "+" + sc : sc;
+  banner.querySelector(".btn.restart").style.display = won ? "" : "none";
 }
