@@ -137,13 +137,53 @@ function buildLabels() {
   }
 }
 
-function showResult(won, msg) {
-  const banner = document.getElementById("result-banner");
-  banner.className = "result-banner " + (won ? "win" : "lose");
-  banner.style.display = "flex";
-  document.getElementById("result-title").textContent = won ? "Você Venceu!" : "Game Over";
-  document.getElementById("result-msg").textContent = msg;
+function showResult(won, msg, cause) {
+  // usa setTimeout para garantir que o render() atual termina antes de exibir o modal
+  setTimeout(function () {
+    if (!won) {
+      if (cause === 'wumpus') {
+        _showWumpusModal(msg);
+      } else {
+        _showPitModal(msg);
+      }
+      return;
+    }
+    // Vitória: banner discreto existente
+    const banner = document.getElementById("result-banner");
+    banner.className = "result-banner win";
+    banner.style.display = "flex";
+    document.getElementById("result-title").textContent = "Você Venceu!";
+    document.getElementById("result-msg").textContent = msg;
+    const sc = G.score;
+    document.getElementById("result-score").textContent = sc >= 0 ? "+" + sc : sc;
+    banner.querySelector(".btn.restart").style.display = "";
+  }, 120);
+}
+
+function _showWumpusModal(msg) {
+  const modal = document.getElementById("modal-wumpus");
+  document.getElementById("modal-wumpus-sub").textContent = msg;
   const sc = G.score;
-  document.getElementById("result-score").textContent = sc >= 0 ? "+" + sc : sc;
-  banner.querySelector(".btn.restart").style.display = won ? "" : "none";
+  document.getElementById("modal-wumpus-score").textContent = sc >= 0 ? "+" + sc : sc;
+
+  // Reinicia animações forçando reflow
+  const img = document.getElementById("modal-wumpus-img");
+  img.style.animation = "none";
+  img.offsetHeight;
+  img.style.animation = "";
+
+  modal.style.display = "flex";
+}
+
+function _showPitModal(msg) {
+  const modal = document.getElementById("modal-pit");
+  document.getElementById("modal-pit-sub").textContent = msg;
+  const sc = G.score;
+  document.getElementById("modal-pit-score").textContent = sc >= 0 ? "+" + sc : sc;
+  modal.style.display = "flex";
+}
+
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "none";
 }

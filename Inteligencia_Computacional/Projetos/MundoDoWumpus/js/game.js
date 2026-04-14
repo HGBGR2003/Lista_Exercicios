@@ -4,6 +4,10 @@ let G = {};
 function newGame() {
   const banner = document.getElementById("result-banner");
   if (banner) { banner.style.display = "none"; banner.className = "result-banner"; }
+  ["modal-wumpus", "modal-pit"].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  });
 
   G = {
     map: createMap(),

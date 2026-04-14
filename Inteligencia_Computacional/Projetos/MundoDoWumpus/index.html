@@ -60,13 +60,14 @@
       <span>Pontos: <strong id="result-score"></strong></span>
       <button class="btn restart" onclick="newGame()">Novo Jogo</button>
     </div>
-    <div class="panel" style="width:100%">
-      <h3>Log de Ações</h3>
-      <div class="log" id="action-log"></div>
-    </div>
+
   </div>
 
   <div>
+    <div class="panel">
+      <h3>Log de Ações</h3>
+      <div class="log" id="action-log"></div>
+    </div>
     <div class="panel">
       <h3>Percepções Atuais</h3>
       <div class="perc-item" data-id="stench" >Fedor do Wumpus</div>
@@ -75,15 +76,6 @@
       <div class="perc-item" data-id="glitter">Brilho do Ouro</div>
       <div class="perc-item" data-id="bump"   >Impacto (Parede)</div>
       <div class="perc-item" data-id="scream" >Grito do Wumpus</div>
-    </div>
-    <div class="panel">
-      <h3>Legenda</h3>
-      <div class="legend-grid">
-        <div class="legend-item">Wumpus</div>    <div class="legend-item">Poço</div>
-        <div class="legend-item">Ouro</div>      <div class="legend-item">Morcego</div>
-        <div class="legend-item">Agente</div>    <div class="legend-item">Saída [1,1]</div>
-        <div class="legend-item">Fedor adj.</div><div class="legend-item">Brisa adj.</div>
-      </div>
     </div>
     <div class="panel">
       <h3>Elementos do Mapa</h3>
@@ -109,6 +101,36 @@
 </div>
 
 
+
+<!-- Modal: Morte pelo Wumpus -->
+<div id="modal-wumpus" class="modal-overlay" style="display:none" onclick="closeModal('modal-wumpus')">
+  <div class="modal-box modal-wumpus-box" onclick="event.stopPropagation()">
+    <div class="modal-speech">
+      <span class="modal-speech-text">GAME OVER!</span>
+    </div>
+    <img src="img/wumpus-transp.png" alt="Wumpus" class="modal-wumpus-img" id="modal-wumpus-img">
+    <p class="modal-sub" id="modal-wumpus-sub"></p>
+    <p class="modal-score">Pontuação final: <strong id="modal-wumpus-score"></strong></p>
+    <div class="modal-actions">
+      <button class="btn restart modal-btn-restart" onclick="newGame()">Jogar Novamente</button>
+      <button class="btn modal-btn-close" onclick="closeModal('modal-wumpus')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Morte no Poço -->
+<div id="modal-pit" class="modal-overlay" style="display:none" onclick="closeModal('modal-pit')">
+  <div class="modal-box modal-pit-box" onclick="event.stopPropagation()">
+    <div class="modal-pit-icon">🕳️</div>
+    <h2 class="modal-pit-title">Você Caiu!</h2>
+    <p class="modal-sub" id="modal-pit-sub"></p>
+    <p class="modal-score">Pontuação final: <strong id="modal-pit-score"></strong></p>
+    <div class="modal-actions">
+      <button class="btn restart modal-btn-restart" onclick="newGame()">Jogar Novamente</button>
+      <button class="btn modal-btn-close" onclick="closeModal('modal-pit')">Fechar</button>
+    </div>
+  </div>
+</div>
 
 <script src="js/config.js"></script>
 <script src="js/map.js"></script>

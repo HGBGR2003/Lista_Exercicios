@@ -141,7 +141,7 @@ function checkRoom() {
     addScore(CFG.PEN_PIT);
     log("🕳️ Você caiu em um POÇO! " + CFG.PEN_PIT + " pontos.", "bad");
     G.gameOver = true;
-    showResult(false, "Você caiu em um poço sem fundo!");
+    showResult(false, "Você caiu em um poço sem fundo!", "pit");
     render();
     return;
   }
@@ -150,7 +150,7 @@ function checkRoom() {
     addScore(CFG.PEN_WUMPUS);
     log("👹 O WUMPUS te DEVOROU! " + CFG.PEN_WUMPUS + " pontos.", "bad");
     G.gameOver = true;
-    showResult(false, "O terrível Wumpus te devorou!");
+    showResult(false, "O terrível Wumpus te devorou!", "wumpus");
     render();
     return;
   }
