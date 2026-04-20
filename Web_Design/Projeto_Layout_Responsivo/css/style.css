@@ -161,10 +161,21 @@ nav div {
   margin: 8px 0;
 }
 
+form {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
 button {
-  padding: 30px;
-  border-radius: 30px;
+  padding: 20px;
+  color: #fff;
   background-color: var(--cor-secundaria);
+  border-radius: 20px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+  border: none;
+
 }
 
 .top-actions {
@@ -197,14 +208,22 @@ button {
   color: #a5a2be;
 }
 
-.icon-princpal.ativo {
+.icon-princpal.ativo{
   background-color: var(--cor-primaria);
 }
 
-.icon-principal.ativo .svg-class {
+.icon-princpal.ativo .svg-class {
   fill: #fff;
 }
 
-.icon-principal.ativo span {
+.icon-princpal.ativo span {
   color: #fff;
 }
+
+#btn-decline{
+  background-color: #fff;
+  color: var(--cor-primaria);
+}
+
+
+
