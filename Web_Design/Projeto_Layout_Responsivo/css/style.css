@@ -16,10 +16,10 @@ body {
   width: min(100vw, calc(100dvh * (9 / 16)));
   aspect-ratio: 9/16;
   position: relative;
-  background-color: #fff;
+  background-color: #ffff;
   margin: 0 auto;
   padding: 14px 10px 0;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 20px
 }
 
@@ -43,6 +43,21 @@ nav div {
 .svg-class {
   width: 20px;
   fill: #3d3a7a;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-reguest{
+  width: 32px;
+  fill: #3d3a7a;
+  padding: 8px;
+  border-radius: 8px;
+  border: solid;
+  border-color: #f3f3f3;
 }
 
 .cabecalho {
@@ -91,6 +106,29 @@ nav div {
   border-radius: 10px;
 }
 
+#users{
+  display: flex;
+}
+
+#img-user {
+  width: 40px;
+  height: 55px;
+  object-fit: cover;
+  margin-left: 8px;
+  border-radius: 10px;
+}
+
+.user p {
+  color: #343172;
+  font-size: 12px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+}
+
 #drive {
   font-size: 12px;
   font-weight: 600;
@@ -122,19 +160,19 @@ nav div {
 
 .box {
   background-color: #fff;
-  box-shadow: -3px 3px 10px 2px rgba(0, 0, 0, 0.3);
-  width: 850px;
+  box-shadow: -3px 3px 5px 3px rgba(0, 0, 0, 0.1);
+  width: 400px;
   border-radius: 2rem;
-  padding: 70px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.box h2 {
-  margin-bottom: 15px;
-  font-size: 28px;
-  color: var(--cor-secundaria);
+.box h3 {
+  font-weight: bold;
+  font-family: Poppins;
+  color: #3d3a7a;
 }
 
 .box h6 {
@@ -168,12 +206,13 @@ form {
 }
 
 button {
+  font-weight: bold;
   padding: 20px;
   color: #fff;
   background-color: var(--cor-secundaria);
   border-radius: 20px;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  padding-bottom: 30px;
+  padding-top: 30px;
   border: none;
 
 }
@@ -224,6 +263,3 @@ button {
   background-color: #fff;
   color: var(--cor-primaria);
 }
-
-
-
