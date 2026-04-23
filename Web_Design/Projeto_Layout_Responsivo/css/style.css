@@ -129,6 +129,30 @@ nav div {
   margin-left: 100px;
 }
 
+#data{
+  border-radius: 10px;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  background-color:rgba(255, 0, 102, 0.077);
+  display: flex;
+}
+
+#data h2 {
+  font-weight: bold;
+  font-family: Poppins;
+  color: var(--cor-primaria);
+}
+
+#data p {
+  color:#eb5b95;
+  font-size: 15px;
+}
+
+#valor{
+  align-items: center;
+  padding-left: 80px;
+}
+
 #drive {
   font-size: 12px;
   font-weight: 600;
@@ -176,7 +200,8 @@ nav div {
 }
 
 .box h6 {
-  margin-top: 15px;
+  font-weight: bold;
+  font-family: Poppins;
   font-size: 18px;
   color: var(--cor-primaria);
 }
