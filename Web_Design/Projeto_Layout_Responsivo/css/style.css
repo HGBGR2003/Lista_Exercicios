@@ -1,8 +1,8 @@
 :root {
-  --cor-primaria: #eb5b95;
-  --cor-secundaria: #2729d3;
-  --fonte-principal: "Nunito", sans-serif;
-}
+      --cor-primaria: #eb5b95;
+      --cor-secundaria: #2729d3;
+      --fonte-principal: Poppins;
+      }
 
 * {
   margin: 0;
@@ -138,6 +138,7 @@ nav div {
 }
 
 #data h2 {
+  font-size: 25px;
   font-weight: bold;
   font-family: Poppins;
   color: var(--cor-primaria);
@@ -153,10 +154,34 @@ nav div {
   padding-left: 80px;
 }
 
-#drive {
+.city{
+  margin-right: 75px;
+}
+
+.city p{
+  align-items: center;
+  padding: 20px 0px 20px 0px;
+}
+
+.checking{
+  display: flex;
+  align-items: center;
+}
+
+.checking h4{
+  font-size: 15px;
+  font-weight: 600;
+  color: #cecdd4;
+}
+
+.horario {
+  padding-left: 80px;
+}
+
+.drive {
   font-size: 12px;
   font-weight: 600;
-  color: #a8a6ba;
+  color: #cecdd4;
 }
 
 #text-principal h1 {
@@ -184,16 +209,18 @@ nav div {
 
 .box {
   background-color: #fff;
-  box-shadow: -3px 3px 5px 3px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  box-shadow: -3px 3px 5px 3px rgba(0, 0, 0, 0.03);
+  height: 450px;
+  width: 450px;
   border-radius: 2rem;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
 }
 
 .box h3 {
+  font-size: 18px;
   font-weight: bold;
   font-family: Poppins;
   color: #3d3a7a;
@@ -230,7 +257,7 @@ form {
   gap: 15px;
 }
 
-button {
+/* button {
   font-weight: bold;
   padding: 20px;
   color: #fff;
@@ -239,8 +266,7 @@ button {
   padding-bottom: 30px;
   padding-top: 30px;
   border: none;
-
-}
+}  */
 
 .top-actions {
   display: grid;
@@ -288,3 +314,6 @@ button {
   background-color: #fff;
   color: var(--cor-primaria);
 }
+
+
+
