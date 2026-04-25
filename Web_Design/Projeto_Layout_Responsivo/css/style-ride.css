@@ -11,17 +11,18 @@
   font-family: var(--fonte-principal);
 }
 
+header{
+  border-radius: 8px;
+}
+
 body {
-  font-family: var(--fonte-principal);
   height: min(100dvh, calc(100vw * (16 / 9)));
   width: min(100vw, calc(100dvh * (9 / 16)));
-  aspect-ratio: 9/16;
   position: relative;
-  background-color: #ffff;
+  background-color: #fff;
   margin: 0 auto;
   padding: 14px 10px 0;
   overflow: auto;
-  border-radius: 20px
 }
 
 nav {
@@ -53,7 +54,6 @@ nav div {
 }
 
 .month{
-    /* padding: 40px 30px; */
     color:#BAB5F7;
     width: 100px;
     height: 170px;  
@@ -65,13 +65,10 @@ nav div {
     font-weight: 600;
 }
 
-#month-top{
-    fill: var(--cor-secundaria);
-}
-
-.month.active{
+.month.active {
     background-color: #fff;
     color: var(--cor-secundaria);
+    fill: var(--cor-secundaria); /* ← mova aqui e remova #month-top */
     position: relative;
     bottom: -20px;
 }
