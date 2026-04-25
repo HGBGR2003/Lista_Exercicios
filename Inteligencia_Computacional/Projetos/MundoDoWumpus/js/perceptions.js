@@ -8,7 +8,6 @@ function updatePerceptions() {
   G.percs.breeze = adj.some(([ar, ac]) => G.map[ar][ac].pit);
   G.percs.rustle = adj.some(([ar, ac]) => G.map[ar][ac].bat);
   G.percs.glitter = G.map[r][c].gold === true;
-  // bump e scream são definidos pelas próprias ações
 }
 
 function getAdj(r, c) {

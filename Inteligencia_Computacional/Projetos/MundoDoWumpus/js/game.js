@@ -32,7 +32,7 @@ function newGame() {
   updatePerceptions();
   buildLabels();
   render();
-  log("🎲 Novo jogo iniciado! Explore a caverna com cuidado.", "warn");
+  log("🎲 Novo jogo iniciado! Explore a caverna com cuidado.", "Warn");
 }
 
 function addScore(delta) {

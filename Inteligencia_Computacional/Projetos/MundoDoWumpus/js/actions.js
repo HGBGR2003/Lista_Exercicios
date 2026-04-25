@@ -39,7 +39,7 @@ function actionForward() {
 
   if (nr < 0 || nr >= CFG.SIZE || nc < 0 || nc >= CFG.SIZE) {
     G.percs.bump = true;
-    log("🧱 Bum! Você bateu em uma parede.", "warn");
+    log("🧱 Bum! Você bateu em uma parede.", "Warn");
     return;
   }
 
@@ -64,13 +64,13 @@ function actionTurnLeft() {
 
 function actionShoot() {
   if (G.arrows <= 0) {
-    log("🏹 Sem flechas disponíveis!", "warn");
+    log("🏹 Sem flechas disponíveis!", "Warn");
     return;
   }
 
   addScore(CFG.COST_ACTION + CFG.COST_SHOOT);
   G.arrows--;
-  log("🏹 Flecha disparada para " + DIRS[G.agent.dir].name + "!", "warn");
+  log("🏹 Flecha disparada para " + DIRS[G.agent.dir].name + "!", "Warn");
 
   const d = DIRS[G.agent.dir];
   let r = G.agent.row + d.dr;
@@ -81,7 +81,7 @@ function actionShoot() {
     const cell = G.map[r][c];
     if (cell.wumpus && cell.wumpusAlive) {
       cell.wumpusAlive = false;
-      cell.wumpus = false; // remove do mapa (simplificação visual)
+      cell.wumpus = false;
       G.percs.scream = true;
       log("😱 GRITO! Você matou um Wumpus em " + dispPos(r, c) + "!", "good");
       hit = true;
@@ -91,7 +91,7 @@ function actionShoot() {
     c += d.dc;
   }
 
-  if (!hit) log("🏹 A flecha se perdeu na escuridão...", "warn");
+  if (!hit) log("🏹 A flecha se perdeu na escuridão...", "Warn");
 }
 
 function actionGrab() {
@@ -111,7 +111,7 @@ function actionGrab() {
       "good",
     );
   } else {
-    log("💰 Nada para pegar aqui.", "warn");
+    log("💰 Nada para pegar aqui.", "Warn");
   }
 }
 
@@ -128,7 +128,7 @@ function actionClimb() {
   } else {
     log(
       "🚪 A saída fica em [1,1]. Você está em " + dispPos(r, c) + ".",
-      "warn",
+      "Warn",
     );
   }
 }
@@ -139,7 +139,7 @@ function checkRoom() {
 
   if (cell.pit) {
     addScore(CFG.PEN_PIT);
-    log("🕳️ Você caiu em um POÇO! " + CFG.PEN_PIT + " pontos.", "bad");
+    log("🕳️ Você caiu em um Poço! " + CFG.PEN_PIT + " pontos.", "bad");
     G.gameOver = true;
     showResult(false, "Você caiu em um poço sem fundo!", "pit");
     render();
@@ -148,7 +148,7 @@ function checkRoom() {
 
   if (cell.wumpus && cell.wumpusAlive) {
     addScore(CFG.PEN_WUMPUS);
-    log("👹 O WUMPUS te DEVOROU! " + CFG.PEN_WUMPUS + " pontos.", "bad");
+    log("👹 O WUMPUS TE DEVOROU! " + CFG.PEN_WUMPUS + " pontos.", "bad");
     G.gameOver = true;
     showResult(false, "O terrível Wumpus te devorou!", "wumpus");
     render();

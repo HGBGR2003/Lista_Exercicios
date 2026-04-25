@@ -37,8 +37,7 @@ function renderGrid() {
         img.src = "img/agent.png";
         img.alt = "Agente";
         img.className = "agent-img";
-        // dir: 0=Leste(→) 1=Norte(↑) 2=Oeste(←) 3=Sul(↓)
-        // sprite base aponta para Leste, então rotacionamos conforme a direção
+
         const rotations = [0, -90, 180, 90];
         img.style.transform = `rotate(${rotations[ad]}deg)`;
         img.style.transition = "transform 0.2s ease";
@@ -138,7 +137,6 @@ function buildLabels() {
 }
 
 function showResult(won, msg, cause) {
-  // usa setTimeout para garantir que o render() atual termina antes de exibir o modal
   setTimeout(function () {
     if (!won) {
       if (cause === 'wumpus') {
@@ -148,7 +146,7 @@ function showResult(won, msg, cause) {
       }
       return;
     }
-    // Vitória: banner discreto existente
+
     const banner = document.getElementById("result-banner");
     banner.className = "result-banner win";
     banner.style.display = "flex";
@@ -166,7 +164,6 @@ function _showWumpusModal(msg) {
   const sc = G.score;
   document.getElementById("modal-wumpus-score").textContent = sc >= 0 ? "+" + sc : sc;
 
-  // Reinicia animações forçando reflow
   const img = document.getElementById("modal-wumpus-img");
   img.style.animation = "none";
   img.offsetHeight;
