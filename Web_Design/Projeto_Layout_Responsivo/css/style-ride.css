@@ -15,6 +15,7 @@
 
 header {
   border-radius: 8px;
+  width: min-content;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
 nav {
   display: flex;
   gap: 20px;
+  width: min-content;
 }
 
 nav div {
@@ -150,16 +152,16 @@ nav div {
   transform: rotate(90deg) scale(1.4);
 }
 
-#box-1 {
+/* #box-1 {
   margin-bottom: 16px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.box {
-  /* background-color: #fd1919; */ /*Mudar a cor*/
+/* .box {
+  
   box-shadow: -3px 3px 5px 3px rgba(0, 0, 0, 0.03);
   height: 450px;
   width: 450px;
@@ -182,4 +184,138 @@ nav div {
   margin: 8px 0;
   line-height: 1.8;
   font-size: 16px;
+} */
+
+#box-1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+#box-1 .box:first-child {
+  margin-top: -20px; 
+  z-index: 10;
+  position: relative;
+}
+
+.box {
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+  border-radius: 2rem;
+  padding: 30px;
+  position: relative;
+  width: min(90%, 450px);
+  margin-bottom: 20px; 
+  z-index: 0;
+  margin-bottom: 25px;
+}
+
+.box:first-of-type {
+  margin-top: -40px;
+  z-index: 10; 
+}
+
+.box-header-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.box-icons-group {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-small {
+  font-size: 12px;
+  color: #bab5f7;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #f8f8ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-small.active {
+  color: #3d3a7a;
+  background-color: #f0f0ff;
+}
+
+.box-users {
+  display: flex;
+  align-items: center;
+}
+
+.box-users img,
+.box-users .icon-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-left: -12px; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.box-users img:first-child,
+.box-users div:first-child {
+  margin-left: 0;
+}
+
+.route-section {
+  position: relative;
+  padding-left: 5px;
+}
+
+.route-line {
+  position: absolute;
+  left: 4px;
+  top: 22px; 
+  bottom: 22px; 
+  width: 1px;
+  border-left: 2px dotted #e0e0f0;
+  z-index: 0;
+}
+
+.route-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+
+.dot-icon {
+  font-size: 12px;
+  color: #4c4ae7;
+  background: #fff;
+}
+
+.location-name {
+  font-weight: 700;
+  color: #3d3a7a;
+  font-size: 16px;
+}
+
+.time-info {
+  color: #bab5f7;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.distance-section {
+  margin: 10px 0 10px 30px;
+  color: #bab5f7; 
+  font-size: 11px;
+  font-weight: 400;
 }
