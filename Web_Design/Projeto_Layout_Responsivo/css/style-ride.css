@@ -112,7 +112,6 @@ nav {
   padding-bottom: 14px;
 }
 
-/* Mesma área do ícone em todos os dias: alinha 28/May com o restante da fileira */
 .month-top-slot {
   display: flex;
   align-items: center;
@@ -137,8 +136,11 @@ nav {
   position: relative;
   z-index: 50;
   box-shadow: 0 4px 16px rgba(39, 41, 211, 0.15);
-  /* Mais alto só no fundo: com align-items:flex-end no nav, número e “May” ficam na mesma linha dos demais */
-  height: 170px;
+  bottom: -43px;
+}
+
+.month.active .month-down {
+  padding-bottom: 57px; 
 }
 
 main {
@@ -307,7 +309,6 @@ main {
   min-width: 0;
 }
 
-/* Mesma cor e peso da origem e do destino (mockup ~#2d3161); escopo forte evita preflight do Tailwind. */
 .route-section .route-item-body .location-name {
   font-weight: 700;
   color: #2d3161;
