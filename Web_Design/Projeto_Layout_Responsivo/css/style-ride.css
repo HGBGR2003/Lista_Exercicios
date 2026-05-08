@@ -58,30 +58,47 @@ body {
   transform: rotate(90deg) scale(1.4);
 }
 
+.header-title-ride {
+  width: 100%;
+}
+
 #text-main {
   color: #fff;
   font-size: 40px;
   font-weight: 700;
-  padding-left: 40px;
+  padding-left: 0;
   margin-bottom: 24px;
 }
 
 nav {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4px;
 }
 
 .month {
-  color: #bab5f7;
   width: 60px;
   height: 130px;
   border-radius: 17px;
+  color: #fff;
 }
 
 .n-month {
   font-size: 26px;
   font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.month-label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .month-down {
@@ -95,8 +112,22 @@ nav {
   padding-bottom: 14px;
 }
 
-.month p:last-child {
-  font-size: 12px;
+/* Mesma área do ícone em todos os dias: alinha 28/May com o restante da fileira */
+.month-top-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.month-cal-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  display: block;
 }
 
 .month.active {
@@ -105,21 +136,9 @@ nav {
   fill: var(--secondary-color);
   position: relative;
   z-index: 50;
-  bottom: -43px;
   box-shadow: 0 4px 16px rgba(39, 41, 211, 0.15);
-}
-
-.month.active .month-down {
-  justify-content: center;
-  padding-bottom: 0;
-}
-
-#svg-calendar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2px;
+  /* Mais alto só no fundo: com align-items:flex-end no nav, número e “May” ficam na mesma linha dos demais */
+  height: 170px;
 }
 
 main {
@@ -176,67 +195,137 @@ main {
 .box-users {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.box-users img,
-.box-users .icon-small {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+.box-users img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
   object-fit: cover;
   border: 2px solid #fff;
-  margin-left: -10px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.08);
 }
 
+.box-users-child {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #fff0f6;
+  border: 2px solid #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.box-users-child i {
+  font-size: 24px;
+  color: var(--primary-cor);
+}
+
 .route-section {
-  position: relative;
-  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.route-line {
-  position: absolute;
-  left: 10px;
-  top: 18px;
-  bottom: 18px;
-  width: 1px;
+.route-row {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.route-row--middle {
+  align-items: center;
+  min-height: 28px;
+}
+
+.route-origin-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #8b7aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  flex-shrink: 0;
+}
+
+.route-origin-marker::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.route-dest-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #dcd6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  flex-shrink: 0;
+}
+
+.route-dest-marker::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #3d2d7a;
+  border-radius: 50%;
+}
+
+.route-line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  padding: 0;
+  min-height: 20px;
+}
+
+.route-line-segment {
+  width: 0;
+  flex: 1 1 auto;
+  min-height: 20px;
   border-left: 2px dotted #e0e0f0;
-  z-index: 0;
 }
 
-.route-item {
+.route-item-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.route-info {
-  display: flex;
-  align-items: center;
   gap: 12px;
-  z-index: 1;
+  min-width: 0;
 }
 
-.dot-icon {
-  font-size: 12px;
-  color: #4c4ae7;
-  background: #fff;
-}
-
-.location-name {
+/* Mesma cor e peso da origem e do destino (mockup ~#2d3161); escopo forte evita preflight do Tailwind. */
+.route-section .route-item-body .location-name {
   font-weight: 700;
-  color: #3d3a7a;
+  color: #2d3161;
   font-size: 15px;
+  line-height: 1.25;
+  margin: 0;
 }
 
 .time-info {
   color: #bab5f7;
   font-size: 13px;
   font-weight: 500;
+  flex-shrink: 0;
+  margin: 0;
 }
 
 .distance-section {
-  margin: 10px 0 10px 34px;
+  margin: 0;
   color: #bab5f7;
   font-size: 11px;
   font-weight: 400;
@@ -256,7 +345,7 @@ main {
 
   #text-main {
     font-size: 32px;
-    padding-left: 24px;
+    padding-left: 0;
     margin-bottom: 16px;
   }
 
@@ -270,7 +359,7 @@ main {
   }
 
   .month.active {
-    bottom: -36px;
+    height: 144px;
   }
 
   #box-1 {
