@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ride</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style-ride.css">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/style-ride.css">
 </head>
 
 <body>
@@ -27,7 +26,7 @@
       </div>
     </section>
 
-    <section class="block w-full pl-[40px]">
+    <section class="header-title-ride">
       <h1 class="text-white text-[40px]" id="text-main">Ride</h1>
     </section>
 
@@ -35,42 +34,46 @@
       <nav>
         <div class="month">
           <section class="month-down">
+            <span class="month-top-slot" aria-hidden="true"></span>
             <p class="n-month">26</p>
-            <p>May</p>
+            <p class="month-label">May</p>
           </section>
         </div>
 
         <div class="month">
           <section class="month-down">
+            <span class="month-top-slot" aria-hidden="true"></span>
             <p class="n-month">27</p>
-            <p>May</p>
+            <p class="month-label">May</p>
           </section>
         </div>
 
         <div class="month active" id="month-top">
           <section class="month-down">
-            <section id="svg-calendar">
-              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <span class="month-top-slot" aria-hidden="true">
+              <svg class="month-cal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true">
                 <path
                   d="M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z" />
               </svg>
-            </section>
+            </span>
             <p class="n-month">28</p>
-            <p>May</p>
+            <p class="month-label">May</p>
           </section>
         </div>
 
         <div class="month">
           <section class="month-down">
+            <span class="month-top-slot" aria-hidden="true"></span>
             <p class="n-month">29</p>
-            <p>May</p>
+            <p class="month-label">May</p>
           </section>
         </div>
 
         <div class="month">
           <section class="month-down">
+            <span class="month-top-slot" aria-hidden="true"></span>
             <p class="n-month">30</p>
-            <p>May</p>
+            <p class="month-label">May</p>
           </section>
         </div>
       </nav>
@@ -93,21 +96,25 @@
         </div>
 
         <div class="route-section">
-          <div class="route-line"></div>
-          <div class="route-item">
-            <div class="route-info">
-              <i class="fa-solid fa-circle-dot dot-icon"></i>
+          <div class="route-row">
+            <span class="route-origin-marker" aria-hidden="true"></span>
+            <div class="route-item-body">
               <p class="location-name">Chicago</p>
+              <p class="time-info">20:00</p>
             </div>
-            <p class="time-info">20:00</p>
           </div>
-          <div class="distance-section">Distance: 15,8 km</div>
-          <div class="route-item">
-            <div class="route-info">
-              <i class="fa-solid fa-circle-dot dot-icon"></i>
-              <p class="location-name">Oak Park</p>
+          <div class="route-row route-row--middle">
+            <div class="route-line-wrap" aria-hidden="true">
+              <span class="route-line-segment"></span>
             </div>
-            <p class="time-info">22:30</p>
+            <p class="distance-section">Distance 15, 8 km</p>
+          </div>
+          <div class="route-row">
+            <span class="route-dest-marker" aria-hidden="true"></span>
+            <div class="route-item-body">
+              <p class="location-name">Oak Park</p>
+              <p class="time-info">22:30</p>
+            </div>
           </div>
         </div>
       </section>
@@ -119,7 +126,7 @@
             <i class="fa-solid fa-suitcase icon-small active"></i>
           </div>
           <div class="box-users">
-            <div class="icon-small text-[#ffb8d9] bg-[#fff0f6] border-0 rounded-full w-8 h-8">
+            <div class="box-users-child" aria-hidden="true">
               <i class="fa-solid fa-child"></i>
             </div>
             <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 3">
@@ -128,21 +135,25 @@
         </div>
 
         <div class="route-section">
-          <div class="route-line"></div>
-          <div class="route-item">
-            <div class="route-info">
-              <i class="fa-solid fa-circle-dot dot-icon"></i>
+          <div class="route-row">
+            <span class="route-origin-marker" aria-hidden="true"></span>
+            <div class="route-item-body">
               <p class="location-name">New York</p>
+              <p class="time-info">21:45</p>
             </div>
-            <p class="time-info">21:45</p>
           </div>
-          <div class="distance-section">Distance: 19,3 km</div>
-          <div class="route-item">
-            <div class="route-info">
-              <i class="fa-solid fa-circle-dot dot-icon"></i>
-              <p class="location-name">Park Avenue</p>
+          <div class="route-row route-row--middle">
+            <div class="route-line-wrap" aria-hidden="true">
+              <span class="route-line-segment"></span>
             </div>
-            <p class="time-info">22:40</p>
+            <p class="distance-section">Distance 19, 3 km</p>
+          </div>
+          <div class="route-row">
+            <span class="route-dest-marker" aria-hidden="true"></span>
+            <div class="route-item-body">
+              <p class="location-name">Park Avenue</p>
+              <p class="time-info">22:40</p>
+            </div>
           </div>
         </div>
       </section>
