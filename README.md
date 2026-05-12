@@ -15,9 +15,6 @@ Repositório com exercícios e projetos desenvolvidos ao longo das disciplinas e
 ## 📂 Exercícios
 
 Exercícios práticos organizados por disciplina e tema abordado.
-
-> 💡 Cada exercício está na sua respectiva pasta, com comentários explicando a lógica utilizada.
-
 ---
 
 ## 🚀 Projetos
